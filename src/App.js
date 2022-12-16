@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { MultiStepForm } from "./components/MultiStepForm";
+import { UserDetails } from "./components/UserDetails";
+import { PersonalInfo } from "./components/PersonalInfo";
+import { LegalAgreements } from "./components/LegalAgreements";
+const App = () => {
+  const submit = (data) => {
+    console.log("Form Submit");
+    console.log("Data:", data);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MultiStepForm
+        steps={[<UserDetails />, <LegalAgreements />, <PersonalInfo />]}
+        submit={submit}
+      />
+    </>
   );
-}
+};
 
 export default App;
